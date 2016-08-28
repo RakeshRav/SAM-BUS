@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:id="@+id/linearLayoutMain"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:descendantFocusability="beforeDescendants"
+    android:background="@color/primary_dark">
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hi! I'm SAM \n Please login to enter"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="32px"
+        android:layout_marginTop="30px"
+        android:lineSpacingExtra="8px"/>
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="720px"
+        android:layout_marginTop="20px"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="600px"
+            android:src="@drawable/girl"
+            android:layout_marginTop="50px"/>
+        
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16px"
+                android:layout_gravity="bottom"
+                android:layout_marginRight="45px"
+                android:layout_marginLeft="45px"
+                android:background="@drawable/border_highlighted_btn_wallet">
+
+                <EditText
+                    android:id="@+id/input_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Username"
+                    android:background="#fff"
+                    android:textSize="32px"
+                    android:inputType="text"
+                    android:textColor="#000"
+                    android:imeOptions="actionNext"
+                    android:padding="24px"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@drawable/shadow_down"/>
+
+                <EditText
+                    android:id="@+id/input_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:singleLine="true"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:textColor="#000"
+                    android:padding="24px"
+                    android:textSize="32px"
+                    android:background="#fff"/>
+            </LinearLayout>
+            
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.rey.material.widget.FloatingActionButton
+                    android:id="@+id/btn_login"
+                    android:layout_width="48px"
+                    android:layout_height="48px"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginRight="2px"
+                    app:fab_elevation="4px"
+                    app:fab_iconSize="35px"
+                    app:fab_iconSrc="@drawable/right_arrow_1"
+                    app:fab_backgroundColor="@color/login_button_color"
+                    app:fab_animDuration="1000"
+                    app:rd_rippleAnimDuration="500"
+                    app:rd_rippleColor="@color/login_button_ripple_color"
+                    app:rd_enable="true"
+                    />
+            </FrameLayout>
+
+
+        </FrameLayout>
+
+    </FrameLayout>
+
+    <com.rey.material.widget.CheckBox
+        android:id="@+id/checkBoxRememberMe"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Remember Me"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="32px"
+        app:cbd_strokeColor="@color/white"
+        app:cbd_tickColor="@color/primary"
+        android:layout_marginTop="16px"
+        android:lineSpacingExtra="8px"/>
+
+    <TextView
+        android:id="@+id/textViewForgotPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Forgot Password?"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#fff"
+        android:textSize="32px"
+        android:layout_marginTop="16px"
+        android:lineSpacingExtra="8px"/>
+
+
+    <TextView
+        android:id="@+id/textViewBrownCode"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="2016 © BrownCode Software LLP | all rights reserved."
+        android:gravity="bottom"
+        android:textColor="#fff"
+        android:textSize="29px"
+        android:layout_marginBottom="8px"
+        android:lineSpacingExtra="8px"/>
+
+</LinearLayout>
+</ScrollView>

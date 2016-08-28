@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@android:color/transparent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <bus.monkeybusiness.com.sambus.utility.FontTextView
+        style="@style/TextView.Nickname"
+        android:id="@+id/nickname" />
+
+    <bus.monkeybusiness.com.sambus.utility.FontTextView
+        android:layout_marginLeft="20dp"
+        android:textSize="20sp"
+        android:text="Father's Name"
+    android:id="@+id/fatherName"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"/>
+
+    <bus.monkeybusiness.com.sambus.utility.FontTextView
+        android:id="@+id/className"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:textSize="20sp"
+        android:text="CLASS 10th"/>
+
+    <bus.monkeybusiness.com.sambus.utility.FontTextView
+        android:id="@+id/dateOfBirth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="6dp"
+        android:textSize="20sp"
+        android:text="12-05-1992"/>
+
+
+    <LinearLayout
+        android:id="@+id/interestsPrimary"
+        style="@style/LinearLayout.Interests"
+        android:gravity="center"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/interest_1"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/interest_2"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/interest_3"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/interest_4"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/interest_5"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
+        <ImageView
+            android:id="@+id/interest_6"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <com.rey.material.widget.Button
+            android:id="@+id/buttonViewRemarks"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@color/primary"
+            android:layout_weight="1"
+            android:elevation="5dp"
+            android:padding="12dp"
+            android:text="View Remarks"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:rd_enable="true"
+            app:rd_rippleAnimDuration="500"
+            app:rd_rippleColor="@color/primary_lighter" />
+
+        <com.rey.material.widget.Button
+            android:id="@+id/buttonViewProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:layout_weight="1"
+            android:elevation="5dp"
+            android:padding="12dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:text="View Profile"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:rd_enable="true"
+            app:rd_rippleAnimDuration="500"
+            app:rd_rippleColor="@color/primary_lighter" />
+
+    </LinearLayout>
+
+</LinearLayout>

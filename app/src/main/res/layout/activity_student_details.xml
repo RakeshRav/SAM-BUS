@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@+id/root"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_height="300px"
+        android:layout_width="match_parent">
+
+        <ImageView
+            android:background="@drawable/student_backwall"
+            android:id="@+id/imageViewProfilePicStudent"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent" />
+
+        <RelativeLayout
+            android:background="#80000000"
+            android:layout_height="match_parent"
+            android:layout_width="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutMenu"
+                android:layout_height="120px"
+                android:layout_width="120px">
+
+                <ImageView
+                    android:background="@drawable/icon_menu_selector"
+                    android:layout_centerInParent="true"
+                    android:layout_height="60px"
+                    android:layout_width="60px" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutEditPic"
+                android:layout_height="120px"
+                android:layout_width="120px"
+                android:layout_alignParentRight="true"
+                >
+
+                <ImageView
+                    android:layout_centerInParent="true"
+                    android:layout_width="58px"
+                    android:layout_height="58px"
+                    android:background="@drawable/edit_pic"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textViewNameStudent"
+                android:layout_alignParentBottom="true"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24px"
+                android:layout_marginLeft="36px"
+                android:layout_width="wrap_content"
+                android:text="Nicole James"
+                android:textColor="@color/white"
+                android:textSize="42px" />
+
+        </RelativeLayout>
+        
+        <com.rey.material.widget.Button
+            android:id="@+id/buttonRemarksStudent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Remark"
+            android:textSize="29px"
+            android:background="@color/primary"
+            android:textColor="@color/white"
+            app:fab_animDuration="1000"
+            app:rd_rippleAnimDuration="500"
+            app:rd_rippleColor="@color/primary_lighter"
+            app:rd_enable="true"
+            android:layout_gravity="bottom|right"
+            />
+
+    </FrameLayout>
+
+    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayoutMainStudent"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/textViewPersonalTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12px"
+                    android:layout_marginLeft="24px"
+                    android:layout_marginTop="16px"
+                    android:text="Personal Details"
+                    android:textColor="@color/edit_text_grey"
+                    android:textSize="26px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_grey" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewFNameTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Father's Name"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewFname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Jarod Kutch MD"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewMNameTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Mother's Name"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewMname"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Kristoffer Greenholt"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewNumberTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Contact Number"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewParentConatctStudent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="90px"
+                        android:layout_marginTop="16px"
+                        android:text="6001184846"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                    <ImageView
+                        android:id="@+id/imageViewEditNumber"
+                        android:layout_width="36px"
+                        android:layout_height="36px"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginRight="24px"
+                        android:background="@drawable/pencil_edit" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewEmailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Email Address"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewEmailStudent"
+                        android:layout_width="450px"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:gravity="right"
+                        android:text="vaughn_haley@powlowski.com"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewDOBTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Date of Birth"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewDOB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="1999-02-17"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewAddressTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Address"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="6279 Larkin Haven"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewCityTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="City"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewCity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Wisokyside"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewStateTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="State"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewState"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Connecticut"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_grey" />
+
+                <TextView
+                    android:id="@+id/textViewAcademicTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12px"
+                    android:layout_marginLeft="24px"
+                    android:layout_marginTop="24px"
+                    android:text="Academic Details"
+                    android:textColor="@color/edit_text_grey"
+                    android:textSize="26px" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_grey" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewRollNoTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Roll No."
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewRollNoStudent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="45"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewClassTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Class"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewClassStudent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="UKG - A"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+
+                </RelativeLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textViewDOJTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="16px"
+                        android:text="Date Of Joining"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="29px" />
+
+
+                    <TextView
+                        android:id="@+id/textViewDOJ"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginRight="24px"
+                        android:layout_marginTop="16px"
+                        android:text="2015-06-28"
+                        android:textColor="@color/black_grey"
+                        android:textSize="29px" />
+
+
+                </RelativeLayout>
+
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutAttendances"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="@color/edit_text_grey" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="24px"
+                        android:text="Attendances"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="32px" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="@color/edit_text_grey" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16px"
+                        android:layout_marginTop="16px"
+                        android:orientation="horizontal">
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/linearLayoutRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="@color/edit_text_grey" />
+
+                    <TextView
+                        android:id="@+id/textViewRemarksTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12px"
+                        android:layout_marginLeft="24px"
+                        android:layout_marginTop="24px"
+                        android:text="Remarks"
+                        android:textColor="@color/edit_text_grey"
+                        android:textSize="26px" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="@color/edit_text_grey" />
+
+                    <bus.monkeybusiness.com.sambus.utility.NonScrollListView
+                        android:id="@+id/listViewEventsStudents"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@color/edit_text_divider"
+                        android:dividerHeight="2px">
+
+
+                    </bus.monkeybusiness.com.sambus.utility.NonScrollListView>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2px"
+                        android:background="@color/edit_text_grey" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+</LinearLayout>

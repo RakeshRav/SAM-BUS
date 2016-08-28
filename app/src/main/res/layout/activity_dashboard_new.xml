@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/root">
+    
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="510px"
+        android:background="@drawable/teacher_dashboard_background">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#80000000">
+
+            <RelativeLayout
+                android:id="@+id/relativeLayoutMenu"
+                android:layout_width="120px"
+                android:layout_height="120px">
+
+                <ImageView
+                    android:layout_width="60px"
+                    android:layout_height="60px"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/icon_menu_selector"/>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/textViewGreetings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Good Morning!"
+                android:textColor="@color/white"
+                android:textSize="65px"
+                android:layout_marginTop="120px"
+                android:layout_centerHorizontal="true"
+                />
+
+            <bus.monkeybusiness.com.sambus.utility.CircleImageView
+                android:id="@+id/imageViewProfilePic"
+                android:layout_width="180px"
+                android:layout_height="200px"
+                android:src="@drawable/ic_tmp_usr_placeholder"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="24px"
+                android:layout_below="@+id/textViewGreetings"/>
+
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Nicol James"
+                android:textColor="@color/white"
+                android:textSize="40px"
+                android:layout_marginTop="16px"
+                android:layout_below="@+id/imageViewProfilePic"
+                android:layout_centerHorizontal="true"
+                />
+
+        </RelativeLayout>
+    </FrameLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/textViewAttdTitle"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Attendances"-->
+        <!--android:textColor="@color/edit_text_grey"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_marginTop="16px"-->
+        <!--android:layout_marginLeft="32px"-->
+        <!--android:layout_marginBottom="4px"-->
+        <!--android:textSize="29px"-->
+        <!--/>-->
+    <!---->
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2px"-->
+        <!--android:background="@color/edit_text_divider"/>-->
+    <!---->
+    <!--<RelativeLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="120px"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<ImageView-->
+            <!--android:layout_alignParentLeft="true"-->
+            <!--android:layout_width="60px"-->
+            <!--android:layout_height="60px"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginLeft="32px"-->
+            <!--android:background="@drawable/attd_icon"/>-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textViewAttdText"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Take Attendance For Today"-->
+            <!--android:textColor="@color/black_grey"-->
+            <!--android:layout_centerVertical="true"-->
+            <!--android:layout_marginLeft="140px"-->
+            <!--android:textSize="32px"-->
+            <!--/>-->
+
+
+        <!--<FrameLayout-->
+            <!--android:id="@+id/frameLayoutAttd"-->
+            <!--android:layout_width="120px"-->
+            <!--android:layout_height="120px"-->
+            <!--android:layout_alignParentRight="true">-->
+
+            <!--<com.rey.material.widget.RelativeLayout-->
+                <!--android:id="@+id/relativeLayoutAdd"-->
+                <!--android:layout_width="120px"-->
+                <!--android:layout_height="120px"-->
+                <!--android:background="@color/add_button_purple"-->
+                <!--app:rd_enable="true"-->
+                <!--app:rd_rippleColor="@color/add_button_purple_for_ripple" />-->
+
+            <!--<ImageView-->
+                <!--android:layout_width="45px"-->
+                <!--android:layout_height="45px"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:background="@drawable/done" />-->
+
+        <!--</FrameLayout>-->
+
+    <!--</RelativeLayout>-->
+
+    <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="2px"-->
+        <!--android:background="@color/edit_text_divider"/>-->
+
+    <TextView
+        android:id="@+id/textViewEventsText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Events"
+        android:textColor="@color/edit_text_grey"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="16px"
+        android:layout_marginLeft="32px"
+        android:layout_marginBottom="4px"
+        android:textSize="29px"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="@color/edit_text_divider"/>
+    
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ListView
+            android:id="@+id/listViewEvents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone">
+        </ListView>
+
+
+        <RelativeLayout
+            android:id="@+id/relativeLayoutNodataFound"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/imageViewCancel"
+                android:layout_width="90px"
+                android:layout_height="90px"
+                android:background="@drawable/no_data_found"
+                android:layout_centerInParent="true"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="No Events For Today"
+                android:layout_below="@+id/imageViewCancel"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16px"
+                android:textSize="29px"
+                />
+
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/progressBarEvents"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+</LinearLayout>

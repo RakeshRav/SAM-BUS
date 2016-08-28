@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primary">#00bcd4</color>
+    <color name="primary_dark">#3EC4E7</color>
+    <color name="primary_lighter">#008fa1</color>
+    <color name="ripple">#00695C</color>
+    <color name="accent">#FFFFFF</color>
+
+    <color name="background_attd">#007888</color>
+
+
+    <color name="background_remarks">#71b3bc</color>
+
+    <!--<color name="primary">#00bcd4</color>-->
+    <!--<color name="primary_dark">#3EC4E7</color>-->
+    <!--<color name="primary_lighter">#008fa1</color>-->
+
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="accent_light">#00838F</color>
+    <color name="black_semi_transparent">#B2000000</color>
+
+    <color name="normal_color_tab">#004D40</color>
+
+    <color name="normal_absent_button">#D32F2F</color>
+
+    <color name="absent_button">#EF5350</color>
+
+    <color name="normal_present_button">#009688</color>
+
+    <!--<color name="background_color">#dad5d5</color>-->
+
+    <color name="background_color">#e4dede</color>
+    <color name="background_color_navdrawer">#007888</color>
+
+    <color name="orange_dark">#E64A19</color>
+    <color name="blue_dark">#00537F</color>
+    <color name="yellow">#F5A623</color>
+
+    <color name="sub_tab">#43a79d</color>
+
+    <color name="event_color_01">#59dbe0</color>
+    <color name="event_color_02">#f57f68</color>
+    <color name="event_color_03">#87d288</color>
+    <color name="event_color_04">#f8b552</color>
+
+    <color name="saffron">#F4B63E</color>
+    <color name="sienna">#EB6460</color>
+    <color name="green">#10b4a5</color>
+    <color name="purple">#7c57e4</color>
+    <color name="pink">#ff4284</color>
+    <color name="orange">#ff8c6a</color>
+
+    <color name="border_color">#959595</color>
+
+    <color name="login_button_color">#EF3F32</color>
+    <color name="login_button_ripple_color">#F38C84</color>
+
+
+
+    <color name="calendar_future_days_bg">#FFFFFF</color>
+    <color name="calendar_past_days_bg">#F5F5F5</color>
+    <color name="calendar_text_current_day">#000000</color>
+    <color name="calendar_text_selected">#FFFFFF</color>
+    <color name="calendar_text_default">#9C9CA0</color>
+    <color name="calendar_text_first_day_of_month">#FD9635</color>
+    <color name="calendar_month_transparent_background">#CCFFFFFF</color>
+    <color name="calendar_divider_color">#F3F3F3</color>
+
+    <!-- Colors for Agenda view -->
+    <color name="agenda_list_header_divider">#E4E4E4</color>
+
+    <!-- General -->
+    <color name="blue_selected">#1D87E7</color>
+    <color name="theme_primary_dark">#1976D2</color>
+    <color name="theme_primary">#2196F3</color>
+    <color name="theme_light_primary">#BBDEFB</color>
+    <color name="theme_accent">#FFEB3B</color>
+    <color name="theme_text_icons">#FFFFFF</color>
+
+    <color name="background_color_lecture">#EBEBEB</color>
+
+
+    <color name="personal_event_color">#2196F3</color>
+    <color name="batch_event_color">#00BCD4</color>
+    <color name="lecture_event_color">#4CAF50</color>
+
+    <color name="calender_button_color">#DD6AD1</color>
+    <color name="calender_button_transarent">#99A9A9A9</color>
+
+    <color name="edit_text_grey">#808080</color>
+    <color name="edit_text_divider">#fcf2efef</color>
+    <color name="black_grey">#262628</color>
+
+    <color name="add_button_purple">#6563A4</color>
+    <color name="add_button_purple_for_ripple">#aaa9c2</color>
+
+    <color name="orange_color">#FF5E00</color>
+
+</resources>
