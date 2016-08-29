@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.squareup.picasso.Picasso;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -34,11 +35,20 @@ import java.util.Calendar;
 import java.util.regex.Matcher;
 
 import bus.monkeybusiness.com.sambus.R;
+import bus.monkeybusiness.com.sambus.adapter.EventsListStudentsAdapter;
+import bus.monkeybusiness.com.sambus.model.addRemarksObject.Remarks;
+import bus.monkeybusiness.com.sambus.model.addRemarksObject.RemarksRequestObject;
+import bus.monkeybusiness.com.sambus.model.addRemarksResponseData.AddRemarksResponseData;
+import bus.monkeybusiness.com.sambus.model.studentDetailsResponse.StudentsDetailsResponseData;
+import bus.monkeybusiness.com.sambus.model.studentRemarksData.Remark;
+import bus.monkeybusiness.com.sambus.model.studentRemarksData.StudentsRemarksResponse;
 import bus.monkeybusiness.com.sambus.retrofit.RestClient;
 import bus.monkeybusiness.com.sambus.utility.Constants;
 import bus.monkeybusiness.com.sambus.utility.FontClass;
+import bus.monkeybusiness.com.sambus.utility.ISO8601;
 import bus.monkeybusiness.com.sambus.utility.Log;
 import bus.monkeybusiness.com.sambus.utility.NonScrollListView;
+import bus.monkeybusiness.com.sambus.utility.Utils;
 import bus.monkeybusiness.com.sambus.utility.dialogBox.LoadingBox;
 import bus.monkeybusiness.com.sambus.utility.preferences.Prefs;
 import bus.monkeybusiness.com.sambus.utility.preferences.PrefsKeys;
@@ -104,7 +114,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
 
     //    NonScrollListView listViewRemarks;
     int studentId;
-    //    StudentsDetailsResponseData studentsDetailsResponseData;
+        StudentsDetailsResponseData studentsDetailsResponseData;
     Dialog subjectDialog;
     EditText editTextRemarks;
     Button buttonSend;
@@ -265,39 +275,39 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
 
 //    ExecutorService executorService = Executors.newFixedThreadPool(5);
 
-//    private void setUIData(StudentsDetailsResponseData studentsDetailsResponseData) {
-//
-////        progressBarStudent.setVisibility(View.GONE);
-//        linearLayoutMainStudent.setVisibility(View.VISIBLE);
-//
-//        this.studentsDetailsResponseData = studentsDetailsResponseData;
-//
-//        if (studentsDetailsResponseData.getData().getStudent() != null) {
-//            textViewName.setText(studentsDetailsResponseData.getData().getStudent().getStudentName());
-//            textViewClass.setText(studentsDetailsResponseData.getData().getStudent().getBatch().getClassAlias());
-////            textViewContact.setText("Address : " + studentsDetailsResponseData.getData().getStudent().getAddress());
-//            textViewEmailStudent.setText(studentsDetailsResponseData.getData().getStudent().getParent().getContactEmail());
-//            textViewRollNoStudent.setText("" + studentsDetailsResponseData.getData().getStudent().getRollno());
-//            textViewContactStudent.setText("" + studentsDetailsResponseData.getData().getStudent().getParent().getContactPhone());
-//
-//            textViewFname.setText(studentsDetailsResponseData.getData().getStudent().getFatherName());
-//            textViewMname.setText(studentsDetailsResponseData.getData().getStudent().getMotherName());
-//            textViewDOB.setText(studentsDetailsResponseData.getData().getStudent().getDob());
-//            textViewAddress.setText(studentsDetailsResponseData.getData().getStudent().getAddress());
-//            textViewCity.setText(studentsDetailsResponseData.getData().getStudent().getCity());
-//            textViewState.setText(studentsDetailsResponseData.getData().getStudent().getState());
-//            textViewDOJ.setText(studentsDetailsResponseData.getData().getStudent().getDateOfJoining());
-//
-//            if (studentsDetailsResponseData.getData().getStudent().getPicture() != null) {
-//                Log.d(TAG, "Image_photo : " + studentsDetailsResponseData.getData().getStudent().getPicture().getUrl());
-////                Picasso.with(this).invalidate(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl());
-//                Picasso.with(this).load(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl()).fit().into(imageViewProfilePicStudent);
-////                imageViewProfilePicStudent.setImageBitmap(getDecodedPhotos(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl()));4
-////                executorService.submit(new imageDownload(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl()));
-//            }
-//        }
-//
-//    }
+    private void setUIData(StudentsDetailsResponseData studentsDetailsResponseData) {
+
+//        progressBarStudent.setVisibility(View.GONE);
+        linearLayoutMainStudent.setVisibility(View.VISIBLE);
+
+        this.studentsDetailsResponseData = studentsDetailsResponseData;
+
+        if (studentsDetailsResponseData.getData().getStudent() != null) {
+            textViewName.setText(studentsDetailsResponseData.getData().getStudent().getStudentName());
+            textViewClass.setText(studentsDetailsResponseData.getData().getStudent().getBatch().getClassAlias());
+//            textViewContact.setText("Address : " + studentsDetailsResponseData.getData().getStudent().getAddress());
+            textViewEmailStudent.setText(studentsDetailsResponseData.getData().getStudent().getParent().getContactEmail());
+            textViewRollNoStudent.setText("" + studentsDetailsResponseData.getData().getStudent().getRollno());
+            textViewContactStudent.setText("" + studentsDetailsResponseData.getData().getStudent().getParent().getContactPhone());
+
+            textViewFname.setText(studentsDetailsResponseData.getData().getStudent().getFatherName());
+            textViewMname.setText(studentsDetailsResponseData.getData().getStudent().getMotherName());
+            textViewDOB.setText(studentsDetailsResponseData.getData().getStudent().getDob());
+            textViewAddress.setText(studentsDetailsResponseData.getData().getStudent().getAddress());
+            textViewCity.setText(studentsDetailsResponseData.getData().getStudent().getCity());
+            textViewState.setText(studentsDetailsResponseData.getData().getStudent().getState());
+            textViewDOJ.setText(studentsDetailsResponseData.getData().getStudent().getDateOfJoining());
+
+            if (studentsDetailsResponseData.getData().getStudent().getPicture() != null) {
+                Log.d(TAG, "Image_photo : " + studentsDetailsResponseData.getData().getStudent().getPicture().getUrl());
+//                Picasso.with(this).invalidate(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl());
+                Picasso.with(this).load(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl()).fit().into(imageViewProfilePicStudent);
+//                imageViewProfilePicStudent.setImageBitmap(getDecodedPhotos(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl()));4
+//                executorService.submit(new imageDownload(studentsDetailsResponseData.getData().getStudent().getPicture().getUrl()));
+            }
+        }
+
+    }
 
     @Override
     public void onClick(View v) {
@@ -308,9 +318,9 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
 //                showNumberDialog(studentId);
                 break;
             case R.id.buttonRemarksStudent:
-//                if (studentsDetailsResponseData != null) {
-//                    showRemarksDialog(studentsDetailsResponseData.getData().getStudent().getId());
-//                }
+                if (studentsDetailsResponseData != null) {
+                    showRemarksDialog(studentsDetailsResponseData.getData().getStudent().getId());
+                }
                 Log.d(TAG, "button pressed");
                 break;
             case R.id.relativeLayoutEditPic:
@@ -354,7 +364,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
         }
     }
 
-    public void showRemarksDialog(int id) {
+    public void showRemarksDialog(final int id) {
 
         subjectDialog = new Dialog(this);
         subjectDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -368,12 +378,12 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
         buttonSend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (editTextRemarks.getText().toString().equalsIgnoreCase("")) {
-//                    Toast.makeText(StudentDetailsActivity.this, "Please Enter Some remarks", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    subjectDialog.dismiss();
-//                    sendRemarksServerCall(id);
-//                }
+                if (editTextRemarks.getText().toString().equalsIgnoreCase("")) {
+                    Toast.makeText(StudentDetailsActivity.this, "Please Enter Some remarks", Toast.LENGTH_SHORT).show();
+                } else {
+                    subjectDialog.dismiss();
+                    sendRemarksServerCall(id);
+                }
             }
         });
 
@@ -515,127 +525,126 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
         String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");
         String aCookies = Prefs.with(this).getString(PrefsKeys.A_COOKIES, "");
 
-//        RestClient.getApiServicePojo(xCookies, aCookies).apiCallGetStudentDetails(String.valueOf(studentId), new Callback<StudentsDetailsResponseData>() {
-//            @Override
-//            public void success(StudentsDetailsResponseData studentsDetailsResponseData, Response response) {
-//                if (LoadingBox.isDialogShowing()) {
-//                    LoadingBox.dismissLoadingDialog();
-//                }
-//                Log.d(TAG, "Response : " + new Gson().toJson(studentsDetailsResponseData));
-//                Prefs.with(StudentDetailsActivity.this).save(PrefsKeys.STUDENT_DETAILS_RESPONSE_DATA, studentsDetailsResponseData);
-//                setUIData(studentsDetailsResponseData);
-//            }
-//
-//            @Override
-//            public void failure(RetrofitError error) {
-//                if (LoadingBox.isDialogShowing()) {
-//                    LoadingBox.dismissLoadingDialog();
-//                }
-//                Log.d(TAG, "error : " + error.toString());
-//            }
-//        });
+        RestClient.getApiServicePojo(xCookies, aCookies).apiCallGetStudentDetails(String.valueOf(studentId), new Callback<StudentsDetailsResponseData>() {
+            @Override
+            public void success(StudentsDetailsResponseData studentsDetailsResponseData, Response response) {
+                if (LoadingBox.isDialogShowing()) {
+                    LoadingBox.dismissLoadingDialog();
+                }
+                Log.d(TAG, "Response : " + new Gson().toJson(studentsDetailsResponseData));
+                Prefs.with(StudentDetailsActivity.this).save(PrefsKeys.STUDENT_DETAILS_RESPONSE_DATA, studentsDetailsResponseData);
+                setUIData(studentsDetailsResponseData);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+                if (LoadingBox.isDialogShowing()) {
+                    LoadingBox.dismissLoadingDialog();
+                }
+                Log.d(TAG, "error : " + error.toString());
+            }
+        });
     }
 
 
-//    private void sendRemarksServerCall(int id) {
-//
-//        RemarksRequestObject remarksRequestObject = new RemarksRequestObject();
-//
-//        String remarksStr = editTextRemarks.getText().toString();
-//
-//        Remarks remarks = new Remarks();
-//        remarks.setDateOfRemark(ISO8601.fromCalendar(Calendar.getInstance()));
-//        remarks.setRemark(remarksStr);
-//        ArrayList<Integer> studentList = new ArrayList<>();
-//
-//        studentList.add(id);
-//
-//        remarks.setStudents(studentList);
-//
-//        remarksRequestObject.setRemarks(remarks);
-//
-//        String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");
-//        String aCookies = Prefs.with(this).getString(PrefsKeys.A_COOKIES, "");
-//
-//        String jsonRemarks = new Gson().toJson(remarksRequestObject);
-//
-//        LoadingBox.showLoadingDialog(this, "Sending Remarks...");
-//
-//        try {
-//            TypedInput typedInput = new TypedByteArray("application/json", jsonRemarks.getBytes("UTF-8"));
-//            RestClient.getApiServicePojo(xCookies, aCookies).apiCallSendRemarks(typedInput, new Callback<AddRemarksResponseData>() {
-//                @Override
-//                public void success(AddRemarksResponseData addRemarksResponseData, Response response) {
-//                    android.util.Log.d(TAG, "Response : " + new Gson().toJson(addRemarksResponseData));
-//                    if (LoadingBox.isDialogShowing()) {
-//                        LoadingBox.dismissLoadingDialog();
-//                    }
-//
-//                    if (addRemarksResponseData.getResponseMetadata().getSuccess().equalsIgnoreCase("yes")) {
-//                        Utils.failureDialog(StudentDetailsActivity.this, "Success", "You have successfully sent remarks");
-//                        getStudentRemarks(studentId);
-//                    } else {
-//                        Utils.failureDialog(StudentDetailsActivity.this, "Failure", "Something went wrong, please try again.");
-//                    }
-//                }
-//
-//                @Override
-//                public void failure(RetrofitError error) {
-//                    android.util.Log.d(TAG, "error : " + error.toString());
-//                    if (LoadingBox.isDialogShowing()) {
-//                        LoadingBox.dismissLoadingDialog();
-//                    }
-//                    Utils.failureDialog(StudentDetailsActivity.this, "Failure", "Something went wrong, please try again.");
-//                }
-//            });
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void sendRemarksServerCall(int id) {
 
-//    private void getStudentRemarks(int studentId) {
-//
-//        String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");
-//        String aCookies = Prefs.with(this).getString(PrefsKeys.A_COOKIES, "");
-//
-//        RestClient.getApiServicePojo(xCookies, aCookies).apiCallFetchSingleStudentRemarks(String.valueOf(studentId), "1",
-//                new Callback<StudentsRemarksResponse>() {
-//                    @Override
-//                    public void success(StudentsRemarksResponse studentsRemarksResponse, Response response) {
-//                        Log.d(TAG, "Response : " + new Gson().toJson(studentsRemarksResponse));
-//
-//                        setUiremarks(studentsRemarksResponse);
-//                    }
-//
-//
-//                    @Override
-//                    public void failure(RetrofitError error) {
-//                        Log.d(TAG, "error : " + error.toString());
-//                    }
-//                });
-//    }
+        RemarksRequestObject remarksRequestObject = new RemarksRequestObject();
 
-//    private void setUiremarks(StudentsRemarksResponse studentsRemarksResponse) {
-//
-////        if (studentsRemarksResponse.getData().getRemarks().isEmpty()) {
-////            textViewRemarks.setVisibility(View.GONE);
-////        } else {
-////            textViewRemarks.setVisibility(View.VISIBLE);
-////        }
-//
-//        for (Remark remark : studentsRemarksResponse.getData().getRemarks()) {
-//            Log.d("adapter", "UIremark : " + new Gson().toJson(remark));
+        String remarksStr = editTextRemarks.getText().toString();
+
+        Remarks remarks = new Remarks();
+        remarks.setDateOfRemark(ISO8601.fromCalendar(Calendar.getInstance()));
+        remarks.setRemark(remarksStr);
+        ArrayList<Integer> studentList = new ArrayList<>();
+
+        studentList.add(id);
+
+        remarks.setStudents(studentList);
+
+        remarksRequestObject.setRemarks(remarks);
+
+        String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");
+        String aCookies = Prefs.with(this).getString(PrefsKeys.A_COOKIES, "");
+
+        String jsonRemarks = new Gson().toJson(remarksRequestObject);
+
+        LoadingBox.showLoadingDialog(this, "Sending Remarks...");
+
+        try {
+            TypedInput typedInput = new TypedByteArray("application/json", jsonRemarks.getBytes("UTF-8"));
+            RestClient.getApiServicePojo(xCookies, aCookies).apiCallSendRemarks(typedInput, new Callback<AddRemarksResponseData>() {
+                @Override
+                public void success(AddRemarksResponseData addRemarksResponseData, Response response) {
+                    android.util.Log.d(TAG, "Response : " + new Gson().toJson(addRemarksResponseData));
+                    if (LoadingBox.isDialogShowing()) {
+                        LoadingBox.dismissLoadingDialog();
+                    }
+
+                    if (addRemarksResponseData.getResponseMetadata().getSuccess().equalsIgnoreCase("yes")) {
+                        Utils.failureDialog(StudentDetailsActivity.this, "Success", "You have successfully sent remarks");
+                        getStudentRemarks(studentId);
+                    } else {
+                        Utils.failureDialog(StudentDetailsActivity.this, "Failure", "Something went wrong, please try again.");
+                    }
+                }
+
+                @Override
+                public void failure(RetrofitError error) {
+                    android.util.Log.d(TAG, "error : " + error.toString());
+                    if (LoadingBox.isDialogShowing()) {
+                        LoadingBox.dismissLoadingDialog();
+                    }
+                    Utils.failureDialog(StudentDetailsActivity.this, "Failure", "Something went wrong, please try again.");
+                }
+            });
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void getStudentRemarks(int studentId) {
+
+        String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");
+        String aCookies = Prefs.with(this).getString(PrefsKeys.A_COOKIES, "");
+
+        RestClient.getApiServicePojo(xCookies, aCookies).apiCallFetchSingleStudentRemarks(String.valueOf(studentId), "1",
+                new Callback<StudentsRemarksResponse>() {
+                    @Override
+                    public void success(StudentsRemarksResponse studentsRemarksResponse, Response response) {
+                        Log.d(TAG, "Response : " + new Gson().toJson(studentsRemarksResponse));
+                        setUiremarks(studentsRemarksResponse);
+                    }
+
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Log.d(TAG, "error : " + error.toString());
+                    }
+                });
+    }
+
+    private void setUiremarks(StudentsRemarksResponse studentsRemarksResponse) {
+
+//        if (studentsRemarksResponse.getData().getRemarks().isEmpty()) {
+//            textViewRemarks.setVisibility(View.GONE);
+//        } else {
+//            textViewRemarks.setVisibility(View.VISIBLE);
 //        }
-////        RemarksListAdapter remarksListAdapter = new RemarksListAdapter(this, studentsRemarksResponse.getData().getRemarks());
-////        listViewRemarks.setAdapter(remarksListAdapter);
-//
-//        if (studentsRemarksResponse.getData().getRemarks() != null && !studentsRemarksResponse.getData().getRemarks().isEmpty()) {
-//            linearLayoutRemarks.setVisibility(View.VISIBLE);
-//            Log.d(TAG, "remarks Size : " + studentsRemarksResponse.getData().getRemarks().size());
-//            EventsListStudentsAdapter adapter = new EventsListStudentsAdapter(this, studentsRemarksResponse.getData().getRemarks());
-//            listViewEventsStudents.setAdapter(adapter);
-//        }
-//    }
+
+        for (Remark remark : studentsRemarksResponse.getData().getRemarks()) {
+            Log.d("adapter", "UIremark : " + new Gson().toJson(remark));
+        }
+//        RemarksListAdapter remarksListAdapter = new RemarksListAdapter(this, studentsRemarksResponse.getData().getRemarks());
+//        listViewRemarks.setAdapter(remarksListAdapter);
+
+        if (studentsRemarksResponse.getData().getRemarks() != null && !studentsRemarksResponse.getData().getRemarks().isEmpty()) {
+            linearLayoutRemarks.setVisibility(View.VISIBLE);
+            Log.d(TAG, "remarks Size : " + studentsRemarksResponse.getData().getRemarks().size());
+            EventsListStudentsAdapter adapter = new EventsListStudentsAdapter(this, studentsRemarksResponse.getData().getRemarks());
+            listViewEventsStudents.setAdapter(adapter);
+        }
+    }
 
 //    private void sendPictureToUploads(String filePath) {
 //        String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");

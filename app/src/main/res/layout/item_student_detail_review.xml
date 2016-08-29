@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     android:id="@+id/linearLayoutMain" xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal" android:layout_width="match_parent"
+    android:orientation="horizontal" android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingLeft="35px"
     android:paddingTop="12px"
@@ -30,7 +30,7 @@
             android:id="@+id/textViewEventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bus No. 40"
+            android:text="Meeting with Ella"
             android:textColor="@color/black"
             android:textSize="34px" />
 
@@ -38,10 +38,19 @@
             android:id="@+id/textViewEventDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Students : 10"
+            android:text="Starbucks"
             android:textColor="#808080"
             android:layout_marginTop="6px"
             android:textSize="28px" />
+
+        <TextView
+            android:id="@+id/textViewEventTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="8 - 10am"
+            android:textColor="#E6000000"
+            android:layout_marginTop="6px"
+            android:textSize="36px" />
 
     </LinearLayout>
 

@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:descendantFocusability="beforeDescendants"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayoutSearch"
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="50px"
+                    android:layout_height="50px"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30px"
+                    android:background="@drawable/search" />
+
+                <AutoCompleteTextView
+                    android:id="@+id/recipientEditTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="100px"
+                    android:layout_gravity="center"
+                    android:background="@drawable/non_border_simple_corner"
+                    android:hint="Start typing Name"
+                    android:lines="2"
+                    android:paddingLeft="45px"
+                    android:paddingRight="45px"
+                    android:textColor="@color/black_grey"
+                    android:textColorHint="@color/edit_text_grey"
+                    android:textSize="32px" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_below="@+id/linearLayoutSearch"
+                android:background="@color/edit_text_divider" />
+
+            <GridView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/gridviewStudentName"
+                android:layout_width="720px"
+                android:layout_height="420px"
+                android:layout_margin="16px"
+                android:gravity="center"
+                android:minHeight="100px"
+                android:numColumns="auto_fit"
+                android:paddingBottom="8px"
+                android:paddingTop="8px"
+                android:horizontalSpacing="5px"
+                android:verticalSpacing="5px"
+                android:visibility="visible" />
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3px"
+                android:background="@color/edit_text_divider" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+
+                    <EditText
+                        android:id="@+id/editTextRemarks"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/white"
+                        android:hint="Enter Your Feedback"
+                        android:imeOptions="actionDone"
+                        android:layout_alignParentBottom="true"
+                        android:inputType="textMultiLine"
+                        android:lines="8"
+                        android:paddingBottom="16px"
+                        android:paddingLeft="30px"
+                        android:paddingRight="16px"
+                        android:textColor="@color/black_grey"
+                        android:textColorHint="@color/edit_text_grey"
+                        android:textSize="32px" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="4px"
+                        android:background="@color/edit_text_divider" />
+
+                <com.rey.material.widget.Button
+                    android:id="@+id/buttonSendRemarks"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/primary"
+                    android:text="SUBMIT"
+                    android:textColor="#fff"
+                    android:textSize="32px"
+                    app:rd_enable="true"
+                    app:rd_rippleAnimDuration="750"
+                    android:layout_alignParentBottom="true"
+                    app:rd_rippleColor="@color/primary_lighter"
+                    app:rd_rippleType="wave" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

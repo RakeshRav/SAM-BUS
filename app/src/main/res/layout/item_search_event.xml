@@ -2,22 +2,21 @@
 <LinearLayout
     android:id="@+id/linearLayoutMain" xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:paddingLeft="35px"
-    android:paddingTop="12px"
-    android:paddingRight="25px"
-    android:paddingBottom="12px">
+    android:layout_height="match_parent"
+    android:padding="35px">
     
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imageViewEventType"
-            android:layout_width="29px"
-            android:layout_height="29px"
-            android:layout_marginTop="8px"
-            android:background="@drawable/dot_yellow"/>
+        <TextView
+            android:id="@+id/textViewRollNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1"
+            android:textColor="@color/black_grey"
+            android:textSize="29px" />
+
     </RelativeLayout>
 
     <LinearLayout
@@ -30,17 +29,17 @@
             android:id="@+id/textViewEventTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Bus No. 40"
-            android:textColor="@color/black"
+            android:text="Meeting with Ella"
+            android:textColor="@color/black_grey"
             android:textSize="34px" />
 
         <TextView
             android:id="@+id/textViewEventDesc"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Students : 10"
+            android:text="Starbucks"
             android:textColor="#808080"
-            android:layout_marginTop="6px"
+            android:layout_marginTop="10px"
             android:textSize="28px" />
 
     </LinearLayout>

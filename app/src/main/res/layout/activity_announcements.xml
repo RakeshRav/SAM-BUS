@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    tools:context="bus.monkeybusiness.com.sambus.activity.AnnouncementsActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/editTextAnnouncements"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Write a message"
+            android:padding="16px"
+            android:textSize="32px"
+            android:lines="5"
+            android:gravity="top"/>
+        
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/background_color"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.rey.material.widget.Spinner
+                android:id="@+id/busListSpinner"
+                style="@style/Material.Widget.Spinner"
+                android:layout_width="0px"
+                android:layout_height="60px"
+                android:layout_weight="1"
+                android:layout_margin="16px"
+                app:rd_style="@style/Material.Drawable.Ripple.Wave"
+                app:spn_arrowAnimDuration="500"
+                app:spn_arrowColor="@color/add_button_purple"
+                app:spn_arrowSize="24px"
+                app:spn_arrowSwitchMode="true"
+                app:spn_dividerAnimDuration="100"
+                app:spn_dividerColor="@color/add_button_purple"
+                app:spn_dividerHeight="5px"
+                app:spn_dividerPadding="10px"
+                app:spn_labelTextColor="@color/black_grey"
+                app:spn_labelTextSize="32px" />
+
+            <com.rey.material.widget.Button
+                android:id="@+id/buttonPost"
+                android:layout_width="0px"
+                android:layout_height="60px"
+                android:layout_weight="1"
+                android:layout_margin="16px"
+                android:text="POST"
+                android:textSize="32px"
+                android:background="@color/primary"
+                android:elevation="5px"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2px"
+            android:background="@color/background_color"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <LinearLayout
+                android:id="@+id/linearLayoutList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:visibility="invisible">
+
+                <TextView
+                    android:id="@+id/textViewTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Announcements"
+                    android:textColor="@color/edit_text_grey"
+                    android:layout_centerVertical="true"
+                    android:layout_marginTop="16px"
+                    android:layout_marginLeft="32px"
+                    android:layout_marginBottom="4px"
+                    android:textSize="29px"
+                    />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2px"
+                    android:background="@color/edit_text_divider"/>
+
+                <ListView
+                    android:id="@+id/listViewAnnouncements"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8px"/>
+            </LinearLayout>
+
+            <ProgressBar
+                android:id="@+id/progressBarAnnouncements"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+</RelativeLayout>

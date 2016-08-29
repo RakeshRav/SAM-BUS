@@ -1,6 +1,8 @@
 package bus.monkeybusiness.com.sambus.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +11,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import bus.monkeybusiness.com.sambus.R;
+import bus.monkeybusiness.com.sambus.activity.StudentListActivity;
+import bus.monkeybusiness.com.sambus.model.busListResponse.Bu;
+import bus.monkeybusiness.com.sambus.utility.Constants;
 import bus.monkeybusiness.com.sambus.utility.FontClass;
 import rmn.androidscreenlibrary.ASSL;
 
@@ -21,22 +29,22 @@ public class BusListAdapter extends BaseAdapter {
     private static final String TAG = "BusListAdapter";
     Context context;
     LayoutInflater inflater;
-//    List<Event> events = new ArrayList<>();
+    List<Bu> buses = new ArrayList<>();
 
     public BusListAdapter(Context context) {
         this.context = context;
         inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-//    public void setData(List<Event> events) {
-////        this.events.clear();
-////        this.events.addAll(events);
-////        notifyDataSetChanged();
-//    }
+    public void setData(List<Bu> buses) {
+        this.buses.clear();
+        this.buses.addAll(buses);
+        notifyDataSetChanged();
+    }
 
     @Override
     public int getCount() {
-        return 5;
+        return buses.size();
     }
 
     @Override
@@ -50,7 +58,7 @@ public class BusListAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
 
         View view = convertView;
         ViewHolder viewHolder;
@@ -74,6 +82,17 @@ public class BusListAdapter extends BaseAdapter {
         }
 
         viewHolder.textViewEventDesc.setVisibility(View.VISIBLE);
+        viewHolder.textViewEventTitle.setText(buses.get(position).getBusName());
+        viewHolder.textViewEventDesc.setText("Students : "+buses.get(position).getStudentCount());
+        viewHolder.linearLayoutMain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d(TAG,"clicked : "+position);
+                Intent studentIntent = new Intent(context, StudentListActivity.class);
+                studentIntent.putExtra(Constants.BUS_ID,buses.get(position).getId());
+                context.startActivity(studentIntent);
+            }
+        });
 //        viewHolder.textViewEventTitle.setText(events.get(position).getEventName());
 //
 //        if (events.get(position).getEventDescription() != null && !events.get(position).getEventDescription().equalsIgnoreCase("")) {

@@ -27,7 +27,7 @@ public class PrefsKeys {
 
     public static final String TEST_RESPONSE_DATA = "testResponseData";
 
-    public static final String EVENT_RESPONSE_DATA = "eventResponseData";
+    public static final String BUS_LIST_RESPONSE = "busListResponse";
 
     public static final String BATCHES_RESPONSE_DATA = "batchesResponseData";
 

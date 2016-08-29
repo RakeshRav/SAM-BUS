@@ -23,9 +23,17 @@ package bus.monkeybusiness.com.sambus.retrofit;
 //import com.monkeybusiness.bus.model.testListResponseData.TestListResponse;
 //import com.monkeybusiness.bus.model.testMarksResponseData.TestMarksResponseData;
 
+import bus.monkeybusiness.com.sambus.model.addRemarksResponseData.AddRemarksResponseData;
+import bus.monkeybusiness.com.sambus.model.announcementResponse.AnnouncementsResponseData;
+import bus.monkeybusiness.com.sambus.model.busListResponse.BusListResponse;
+import bus.monkeybusiness.com.sambus.model.busStudentList.BusStudentList;
 import bus.monkeybusiness.com.sambus.model.changeRoleRespnse.ChangeRoleResponse;
 import bus.monkeybusiness.com.sambus.model.checkLoginResponse.CheckLoginResponse;
 import bus.monkeybusiness.com.sambus.model.loginResponseData.LoginResponse;
+import bus.monkeybusiness.com.sambus.model.studentDetailsResponse.StudentsDetailsResponseData;
+import bus.monkeybusiness.com.sambus.model.studentRemarksData.StudentsRemarksResponse;
+import bus.monkeybusiness.com.sambus.model.studentSearchdata.SearchStudentData;
+import bus.monkeybusiness.com.sambus.model.studentsResponse.StudentsListResponseData;
 import retrofit.Callback;
 import retrofit.http.Body;
 import retrofit.http.GET;
@@ -57,7 +65,7 @@ public interface ApiService {
     void apiCallCheckLogin(Callback<CheckLoginResponse> callback);
 
     @GET("/bus")
-    void apiCallGetBusList(Callback<String> callback);
+    void apiCallGetBusList(Callback<BusListResponse> callback);
 //
 //    @GET("/lectures")
 //    void apiCallLectures(Callback<LectureResponseData> callback);
@@ -66,13 +74,13 @@ public interface ApiService {
 //    @GET("/students")
 //    void apiCallGetStudents(@Query("lecture_id") String lectureId, Callback<StudentsListResponseData> callback);
 //
-//    //for getting list of students
-//    @GET("/students")
-//    void apiCallGetStudentsByBatch(@Query("batch_id") String batchId, Callback<StudentsListResponseData> callback);
+    //for getting list of students
+    @GET("/students")
+    void apiCallGetStudentsByBatch(@Query("batch_id") String batchId, Callback<StudentsListResponseData> callback);
 //
 //    //for getting  student details
     @GET("/students/{id}")
-    void apiCallGetStudentDetails(@Path("id") String studentId, Callback<String> callback);
+    void apiCallGetStudentDetails(@Path("id") String studentId, Callback<StudentsDetailsResponseData> callback);
 //
 //    @GET("/tests")
 //    void apiCallTestList(Callback<TestListResponse> callback);
@@ -80,11 +88,11 @@ public interface ApiService {
 //    @POST("/lectures/{lecture_id}/tests")
 //    void apiCallPostTest(@Path("lecture_id") String lectureId, @Body TypedInput testPostObject, Callback<AddTestResponse> callback);
 //
-//    @POST("/remarks")
-//    void apiCallSendRemarks(@Body TypedInput remarksPostObject, Callback<AddRemarksResponseData> callback);
+    @POST("/remarks")
+    void apiCallSendRemarks(@Body TypedInput remarksPostObject, Callback<AddRemarksResponseData> callback);
 //
-//    @GET("/search/students")
-//    void apiCallSearchStudent(@Query("search_text") String searchText, Callback<SearchStudentData> callback);
+    @GET("/search/students")
+    void apiCallSearchStudent(@Query("search_text") String searchText, Callback<SearchStudentData> callback);
 //
 //    @GET("/events")
 //    void apiCallGetEvents(@Query("from_time") String fromTime, @Query("to_time") String toTime, Callback<EventResponseData> callback);
@@ -110,8 +118,8 @@ public interface ApiService {
 //    @GET("/batches/{batch_id}/student_attendances")
 //    void apiCallMonthAttendanceDetail(@Path("batch_id") String batchId, @Query("from_date") String currentDate, @Query("to_date") String toDate, Callback<String> callback);
 //
-//    @GET("/students/{student_id}/remarks")
-//    void apiCallFetchSingleStudentRemarks(@Path("student_id") String studentId, @Query("all") String all, Callback<StudentsRemarksResponse> callback);
+    @GET("/students/{student_id}/remarks")
+    void apiCallFetchSingleStudentRemarks(@Path("student_id") String studentId, @Query("all") String all, Callback<StudentsRemarksResponse> callback);
 //
 //    @GET("/lectures/{lecture_id}/tests")
 //    void apiCallGetTestByLectures(@Path("lecture_id") String lectureId, Callback<TestListResponse> callback);
@@ -158,6 +166,13 @@ public interface ApiService {
 
     //for getting list of students
     @GET("/bus/{bus_id}")
-    void apiCallGetStudentsByBusID(@Query("bus_id") String batchId, Callback<String> callback);
+    void apiCallGetStudentsByBusID(@Path("bus_id") String batchId, Callback<BusStudentList> callback);
 
+    //for posting announcements
+    @POST("/announcements")
+    void apiCallPostAnnouncment(@Body TypedInput announceObject, Callback<String> callback);
+
+    //for getting announcements
+    @GET("/announcements")
+    void apiCallGetAnnouncements(@Query("from_time") String fromDate,@Query("to_time") String toDate, Callback<AnnouncementsResponseData> callback);
 }

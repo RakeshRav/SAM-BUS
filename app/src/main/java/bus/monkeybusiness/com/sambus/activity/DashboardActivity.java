@@ -20,6 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import bus.monkeybusiness.com.sambus.R;
 import bus.monkeybusiness.com.sambus.adapter.BusListAdapter;
+import bus.monkeybusiness.com.sambus.model.busListResponse.BusListResponse;
 import bus.monkeybusiness.com.sambus.model.checkLoginResponse.CheckLoginResponse;
 import bus.monkeybusiness.com.sambus.retrofit.RestClient;
 import bus.monkeybusiness.com.sambus.utility.Constants;
@@ -82,6 +83,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         initialization();
         setFont();
+
         dashBoardServerCall();
 
         new Handler().postDelayed(new Runnable() {
@@ -132,9 +134,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         busListAdapter = new BusListAdapter(this);
         listViewEvents.setAdapter(busListAdapter);
 
-        progressBarEvents.setVisibility(View.GONE);
-        listViewEvents.setVisibility(View.VISIBLE);
-
         relativeLayoutMenu.setOnClickListener(this);
 //        textViewActionTitle.setOnClickListener(this);
 //        buttonTakeAttd.setOnClickListener(this);
@@ -172,23 +171,23 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     }
 
-//    public void setUiDataForListView(EventResponseData eventResponseData) {
-//
-//        progressBarEvents.setVisibility(View.GONE);
-//        if (eventResponseData.getData().getEvents() != null) {
-//            if (!eventResponseData.getData().getEvents().isEmpty()) {
-//                listViewEvents.setVisibility(View.VISIBLE);
-//                relativeLayoutNodataFound.setVisibility(View.GONE);
-//                busListAdapter.setData(eventResponseData.getData().getEvents());
-//            } else {
-//                listViewEvents.setVisibility(View.GONE);
-//                relativeLayoutNodataFound.setVisibility(View.VISIBLE);
-//            }
-//        } else {
-//            listViewEvents.setVisibility(View.GONE);
-//            relativeLayoutNodataFound.setVisibility(View.VISIBLE);
-//        }
-//    }
+    public void setUiDataForListView(BusListResponse busListResponse) {
+
+        progressBarEvents.setVisibility(View.GONE);
+        if (busListResponse.getData().getBus() != null) {
+            if (!busListResponse.getData().getBus().isEmpty()) {
+                listViewEvents.setVisibility(View.VISIBLE);
+                relativeLayoutNodataFound.setVisibility(View.GONE);
+                busListAdapter.setData(busListResponse.getData().getBus());
+            } else {
+                listViewEvents.setVisibility(View.GONE);
+                relativeLayoutNodataFound.setVisibility(View.VISIBLE);
+            }
+        } else {
+            listViewEvents.setVisibility(View.GONE);
+            relativeLayoutNodataFound.setVisibility(View.VISIBLE);
+        }
+    }
 
     @Override
     public void onClick(View v) {
@@ -240,13 +239,13 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         String xCookies = Prefs.with(this).getString(PrefsKeys.X_COOKIES, "");
         String aCookies = Prefs.with(this).getString(PrefsKeys.A_COOKIES, "");
 
-        RestClient.getApiService(xCookies, aCookies).apiCallGetBusList(new Callback<String>() {
+        RestClient.getApiServicePojo(xCookies, aCookies).apiCallGetBusList(new Callback<BusListResponse>() {
             @Override
-            public void success(String s, Response response) {
-                Log.d(TAG, "Response : " + s);
+            public void success(BusListResponse busListResponse, Response response) {
+                Log.d(TAG, "Response : " + new Gson().toJson(busListResponse));
 
-//                Prefs.with(DashboardActivity.this).save(PrefsKeys.EVENT_RESPONSE_DATA, eventResponseData);
-//                setUiDataForListView(eventResponseData);
+                Prefs.with(DashboardActivity.this).save(PrefsKeys.BUS_LIST_RESPONSE, busListResponse);
+                setUiDataForListView(busListResponse);
             }
 
             @Override

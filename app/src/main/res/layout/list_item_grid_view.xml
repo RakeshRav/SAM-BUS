@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:id="@+id/root" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/remarks_item_backgrund"
+    android:padding="8dp"
+    android:layout_margin="4px">
+
+    <TextView
+        android:id="@+id/textViewNameItem"
+        android:layout_width="200px"
+        android:layout_height="wrap_content"
+        android:text="name"
+        android:textSize="28px"
+        android:textColor="@color/black_grey"
+        android:layout_gravity="center"
+        />
+
+    <ImageView
+        android:id="@+id/imageViewCross"
+        android:layout_width="32px"
+        android:layout_height="32px"
+        android:layout_marginLeft="16px"
+        android:background="@drawable/cross"/>
+</LinearLayout>
