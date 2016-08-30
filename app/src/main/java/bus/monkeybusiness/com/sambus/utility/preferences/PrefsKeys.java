@@ -51,7 +51,7 @@ public class PrefsKeys {
 
     public static final String MORE_SCREEN_DATA = "moreScreenData";
 
-    public static final String VERIFIED_USER = "verifiedUser";
+    public static final String VERIFIED_USER = "verifiedUser_bus";
 
     public static final String STUDENT_DATA_TEST = "studentDataTest";
     public static final String STUDENT_EXAM_TEST = "studentExamTest";

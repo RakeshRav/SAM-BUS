@@ -1,13 +1,19 @@
 package bus.monkeybusiness.com.sambus.activity;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -29,6 +35,8 @@ import bus.monkeybusiness.com.sambus.utility.Log;
 import bus.monkeybusiness.com.sambus.utility.dialogBox.LoadingBox;
 import bus.monkeybusiness.com.sambus.utility.preferences.Prefs;
 import bus.monkeybusiness.com.sambus.utility.preferences.PrefsKeys;
+import io.codetail.animation.ViewAnimationUtils;
+import io.codetail.animation.SupportAnimator;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -45,12 +53,16 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     //
     RelativeLayout relativeLayoutMenu;
 
+    private LinearLayout attachmentLayout;
+    private boolean isHidden = true;
+
 //    TextView textViewActionTitle;
 
 //    TextView textViewClass;
 //    TextView textViewContact;
 //    TextView textViewEmailStudent;
 
+    FrameLayout framelayoutTop;
     ImageView imageViewProfilePic;
     TextView textViewName;
     TextView textViewGreetings;
@@ -69,6 +81,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     ListView listViewEvents;
     ProgressBar progressBarEvents;
     private BusListAdapter busListAdapter;
+
+    RelativeLayout relativeLayoutTop;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -94,12 +108,20 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         }, 200);
     }
 
+    LinearLayout btnAnnounce;
+    LinearLayout btnRemarks;
+    LinearLayout btnsignOut;
+
     public void initialization() {
         linearLayoutMainDash = (LinearLayout) findViewById(R.id.root);
 
         relativeLayoutMenu = (RelativeLayout) findViewById(R.id.relativeLayoutMenu);
         listViewEvents = (ListView) findViewById(R.id.listViewEvents);
+        attachmentLayout = (LinearLayout) findViewById(R.id.menu_attachments);
 
+        btnAnnounce = (LinearLayout) findViewById(R.id.btnAnnounce);
+        btnRemarks = (LinearLayout) findViewById(R.id.btnRemarks);
+        btnsignOut = (LinearLayout) findViewById(R.id.btnsignOut);
 
 //        textViewActionTitle = (TextView) findViewById(R.id.textViewActionTitle);
         textViewName = (TextView) findViewById(R.id.textViewName);
@@ -110,6 +132,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 //        textViewAttdText= (TextView) findViewById(R.id.textViewAttdText);
 //        textViewAttdTitle= (TextView) findViewById(R.id.textViewAttdTitle);
         textViewEventsText = (TextView) findViewById(R.id.textViewEventsText);
+        framelayoutTop = (FrameLayout) findViewById(R.id.framelayoutTop);
 
 //        relativeLayoutAdd = (RelativeLayout) findViewById(R.id.relativeLayoutAdd);
 
@@ -118,6 +141,8 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         progressBarEvents = (ProgressBar) findViewById(R.id.progressBarEvents);
 
         relativeLayoutNodataFound = (RelativeLayout) findViewById(R.id.relativeLayoutNodataFound);
+
+        relativeLayoutTop = (RelativeLayout) findViewById(R.id.relativeLayoutTop);
 
         progressBarEvents.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.add_button_purple), PorterDuff.Mode.MULTIPLY);
 
@@ -135,6 +160,10 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
         listViewEvents.setAdapter(busListAdapter);
 
         relativeLayoutMenu.setOnClickListener(this);
+        btnAnnounce.setOnClickListener(this);
+        btnRemarks.setOnClickListener(this);
+        btnsignOut.setOnClickListener(this);
+        relativeLayoutTop.setOnClickListener(this);
 //        textViewActionTitle.setOnClickListener(this);
 //        buttonTakeAttd.setOnClickListener(this);
 //        relativeLayoutAdd.setOnClickListener(this);
@@ -191,8 +220,35 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()) {
             case R.id.relativeLayoutMenu:
+                Log.d(TAG,"Clicked menu");
+                if (isHidden)
+                {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
+                        showMenuBelowLollipop();
+                    else
+                        showMenu();
+                }else {
+                    hideMenu();
+                }
+                  break;
+            case R.id.btnAnnounce:
+                Intent intent = new Intent(this,AnnouncementsActivity.class);
+                startActivity(intent);
+                hideMenu();
+                break;
+            case R.id.btnRemarks:
+                Intent remarksIntent = new Intent(this,RemarksActivity.class);
+                startActivity(remarksIntent);
+                hideMenu();
+                break;
+            case R.id.btnsignOut:
+                Prefs.with(this).save(PrefsKeys.VERIFIED_USER, Constants.UNVERIFIED);
+                Intent signOutIntent = new Intent(this, LoginActivity.class);
+                startActivity(signOutIntent);
+                finish();
                 break;
         }
     }
@@ -259,5 +315,81 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     protected void onResume() {
         super.onResume();
 //        Utils.classFlag = 0;
+    }
+
+    void showMenuBelowLollipop() {
+        int cx = (attachmentLayout.getLeft() + attachmentLayout.getRight());
+        int cy = attachmentLayout.getTop();
+        int radius = Math.max(attachmentLayout.getWidth(), attachmentLayout.getHeight());
+
+        try {
+            SupportAnimator animator = ViewAnimationUtils.createCircularReveal(attachmentLayout, cx, cy, 0, radius);
+            animator.setInterpolator(new AccelerateDecelerateInterpolator());
+            animator.setDuration(300);
+
+            if (isHidden) {
+                //Log.e(getClass().getSimpleName(), "showMenuBelowLollipop");
+                attachmentLayout.setVisibility(View.VISIBLE);
+                animator.start();
+                isHidden = false;
+            } else {
+                SupportAnimator animatorReverse = animator.reverse();
+                animatorReverse.start();
+                animatorReverse.addListener(new SupportAnimator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart() {
+                    }
+
+                    @Override
+                    public void onAnimationEnd() {
+                        //Log.e("MainActivity", "onAnimationEnd");
+                        isHidden = true;
+                        attachmentLayout.setVisibility(View.INVISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationCancel() {
+                    }
+
+                    @Override
+                    public void onAnimationRepeat() {
+                    }
+                });
+            }
+        } catch (Exception e) {
+            //Log.e(getClass().getSimpleName(), "try catch");
+            isHidden = true;
+            attachmentLayout.setVisibility(View.INVISIBLE);
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    void showMenu() {
+        int cx = (attachmentLayout.getLeft() + attachmentLayout.getRight());
+        int cy = attachmentLayout.getTop();
+        int radius = Math.max(attachmentLayout.getWidth(), attachmentLayout.getHeight());
+
+        if (isHidden) {
+            Animator anim = android.view.ViewAnimationUtils.createCircularReveal(attachmentLayout, cx, cy, 0, radius);
+            attachmentLayout.setVisibility(View.VISIBLE);
+            anim.start();
+            isHidden = false;
+        } else {
+            Animator anim = android.view.ViewAnimationUtils.createCircularReveal(attachmentLayout, cx, cy, radius, 0);
+            anim.addListener(new AnimatorListenerAdapter() {
+                @Override
+                public void onAnimationEnd(Animator animation) {
+                    super.onAnimationEnd(animation);
+                    attachmentLayout.setVisibility(View.INVISIBLE);
+                    isHidden = true;
+                }
+            });
+            anim.start();
+        }
+    }
+
+    private void hideMenu() {
+        attachmentLayout.setVisibility(View.GONE);
+        isHidden = true;
     }
 }

@@ -7,11 +7,13 @@
     android:id="@+id/root">
     
     <FrameLayout
+        android:id="@+id/framelayoutTop"
         android:layout_width="match_parent"
         android:layout_height="510px"
         android:background="@drawable/teacher_dashboard_background">
 
         <RelativeLayout
+            android:id="@+id/relativeLayoutTop"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#80000000">
@@ -62,6 +64,16 @@
                 />
 
         </RelativeLayout>
+
+        <io.codetail.widget.RevealFrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100px">
+
+            <include
+                layout="@layout/item_menu"/>
+        </io.codetail.widget.RevealFrameLayout>
+
     </FrameLayout>
 
     <!--<TextView-->

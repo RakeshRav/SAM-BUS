@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -42,8 +43,9 @@ import rmn.androidscreenlibrary.ASSL;
 public class StudentListActivity extends AppCompatActivity implements View.OnClickListener{
 
     public final String TAG = "FriendsActivity";
-//    RelativeLayout relativeLayoutMenu;
-//    TextView textViewActionTitle;
+    RelativeLayout relativeLayoutMenu;
+    TextView textViewActionTitle;
+    ImageView imageViewToolbaar;
 
     //    @Nullable
 //    @Override
@@ -70,13 +72,15 @@ public class StudentListActivity extends AppCompatActivity implements View.OnCli
 
         listViewStudents = (ListView) findViewById(R.id.listViewStudents);
 
-//        relativeLayoutMenu = (RelativeLayout) findViewById(R.id.relativeLayoutMenu);
-//        textViewActionTitle = (TextView) findViewById(R.id.textViewActionTitle);
+        relativeLayoutMenu = (RelativeLayout) findViewById(R.id.relativeLayoutMenu);
+        textViewActionTitle = (TextView) findViewById(R.id.textViewActionTitle);
+        imageViewToolbaar =(ImageView) findViewById(R.id.imageViewToolbaar);
 
-//        relativeLayoutMenu.setOnClickListener(this);
-//        textViewActionTitle.setOnClickListener(this);
+        imageViewToolbaar.setBackgroundDrawable(getResources().getDrawable(R.drawable.cancel_event));
+        relativeLayoutMenu.setOnClickListener(this);
+        textViewActionTitle.setOnClickListener(this);
 
-//        textViewActionTitle.setText("My Class");
+        textViewActionTitle.setText("Student List");
 
         Intent intent = getIntent();
         int busId = intent.getIntExtra(Constants.BUS_ID, 0);
@@ -123,6 +127,7 @@ public class StudentListActivity extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.relativeLayoutMenu:
+                finish();
                 break;
         }
     }

@@ -71,7 +71,6 @@ public class StudentNameAdapter extends BaseAdapter {
 
         holder.textViewNameItem.setText(studentNames.get(position).getStudentName());
 
-        final View finalView = view;
         holder.imageViewCross.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

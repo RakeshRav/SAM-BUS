@@ -313,6 +313,7 @@ public class StudentDetailsActivity extends AppCompatActivity implements View.On
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.relativeLayoutMenu:
+                finish();
                 break;
             case R.id.imageViewEditNumber:
 //                showNumberDialog(studentId);

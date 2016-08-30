@@ -8,9 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.rey.material.widget.Button;
@@ -50,6 +53,10 @@ public class AnnouncementsActivity extends AppCompatActivity implements View.OnC
     ListView listViewAnnouncements;
     LinearLayout linearLayoutList;
 
+    RelativeLayout relativeLayoutMenu;
+    TextView textViewActionTitle;
+    ImageView imageViewToolbaar;
+
     ProgressBar progressBarAnnouncements;
 
     AnnouncementAdapter announcementAdapter;
@@ -76,9 +83,18 @@ public class AnnouncementsActivity extends AppCompatActivity implements View.OnC
         listViewAnnouncements  = (ListView) findViewById(R.id.listViewAnnouncements);
         progressBarAnnouncements = (ProgressBar) findViewById(R.id.progressBarAnnouncements);
 
+        relativeLayoutMenu = (RelativeLayout) findViewById(R.id.relativeLayoutMenu);
+        textViewActionTitle = (TextView) findViewById(R.id.textViewActionTitle);
+        imageViewToolbaar =(ImageView) findViewById(R.id.imageViewToolbaar);
+
+        textViewActionTitle.setText("Announcements");
+
+        imageViewToolbaar.setBackgroundDrawable(getResources().getDrawable(R.drawable.cancel_event));
+
         linearLayoutList = (LinearLayout) findViewById(R.id.linearLayoutList);
 
         buttonPost.setOnClickListener(this);
+        relativeLayoutMenu.setOnClickListener(this);
         progressBarAnnouncements.getIndeterminateDrawable().setColorFilter(getResources().getColor(R.color.add_button_purple), PorterDuff.Mode.MULTIPLY);
 
         busList = new ArrayList<>();
@@ -101,6 +117,9 @@ public class AnnouncementsActivity extends AppCompatActivity implements View.OnC
         switch (v.getId()) {
             case R.id.buttonPost:
                 sendPostAnnouncementServerCall();
+                break;
+            case R.id.relativeLayoutMenu:
+                finish();
                 break;
         }
     }

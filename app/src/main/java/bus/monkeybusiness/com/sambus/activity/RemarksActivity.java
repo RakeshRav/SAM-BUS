@@ -53,13 +53,13 @@ import rmn.androidscreenlibrary.ASSL;
  */
 public class RemarksActivity extends AppCompatActivity implements View.OnClickListener{
 
-    private static final String TAG = "RemarksActivity";
+    private static final String TAG = "RemarksFragment";
     public ArrayList<Student> studentNameadapterList = new ArrayList<>();
     public List<Student> studentListObject;
     public List<HashMap<String, String>> studentsHashMap;
-//    RelativeLayout relativeLayoutMenu;
+    RelativeLayout relativeLayoutMenu;
 
-//    TextView textViewActionTitle;
+    TextView textViewActionTitle;
     AutoCompleteTextView recipientEditTextView;
     Button buttonSendRemarks;
     EditText editTextRemarks;
@@ -86,23 +86,19 @@ public class RemarksActivity extends AppCompatActivity implements View.OnClickLi
         new ASSL(this, (ViewGroup) findViewById(R.id.root), 1134, 720,
                 false);
 
-//        Utils.classFlag = 7;
-
         new CommonApiCalls(this).checkLoginServerCall();
 
-//        toggleLayouts(linearlayoutRemarks, textViewRemarks);
-
         buttonSendRemarks = (Button) findViewById(R.id.buttonSendRemarks);
-//        relativeLayoutMenu = (RelativeLayout) findViewById(R.id.relativeLayoutMenu);
-//        textViewActionTitle = (TextView) findViewById(R.id.textViewActionTitle);
+        relativeLayoutMenu = (RelativeLayout) findViewById(R.id.relativeLayoutMenu);
+        textViewActionTitle = (TextView) findViewById(R.id.textViewActionTitle);
 
         editTextRemarks = (EditText) findViewById(R.id.editTextRemarks);
 
-//        relativeLayoutMenu.setOnClickListener(this);
-//        textViewActionTitle.setOnClickListener(this);
+        relativeLayoutMenu.setOnClickListener(this);
+        textViewActionTitle.setOnClickListener(this);
         buttonSendRemarks.setOnClickListener(this);
 
-//        textViewActionTitle.setText("Remarks");
+        textViewActionTitle.setText("Remarks");
 
         recipientEditTextView = (AutoCompleteTextView) findViewById(R.id.recipientEditTextView);
 
@@ -119,11 +115,10 @@ public class RemarksActivity extends AppCompatActivity implements View.OnClickLi
 
         gridviewStudentName = (GridView) findViewById(R.id.gridviewStudentName);
 
-//        studentNameAdapter = new StudentNameAdapter(this, new ArrayList<>());
-//        gridviewStudentName.setAdapter(studentNameAdapter);
+        studentNameAdapter = new StudentNameAdapter(this, new ArrayList<Student>());
+        gridviewStudentName.setAdapter(studentNameAdapter);
 
         gridviewStudentName.setVisibility(View.VISIBLE);
-
 
         recipientEditTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -178,7 +173,7 @@ public class RemarksActivity extends AppCompatActivity implements View.OnClickLi
             }
         });
 
-//        textViewActionTitle.setTypeface(FontClass.proximaRegular(this));
+        textViewActionTitle.setTypeface(FontClass.proximaRegular(this));
         recipientEditTextView.setTypeface(FontClass.proximaRegular(this));
         buttonSendRemarks.setTypeface(FontClass.proximaRegular(this));
         editTextRemarks.setTypeface(FontClass.proximaRegular(this));
@@ -188,6 +183,7 @@ public class RemarksActivity extends AppCompatActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.relativeLayoutMenu:
+                finish();
                 break;
             case R.id.buttonSendRemarks:
                 sendRemarksServerCall();

@@ -19,6 +19,12 @@ android {
     }
 }
 
+repositories {
+    maven {
+        url "https://jitpack.io"
+    }
+}
+
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
@@ -35,5 +41,11 @@ dependencies {
     //Network
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'com.squareup.okhttp:okhttp:2.0.0'
+
+    //for menu
+    compile ('com.github.ozodrukh:CircularReveal:1.1.1@aar') {
+        transitive = true;
+    }
+
     compile files('libs/assl_sdk_rmn.jar')
 }
