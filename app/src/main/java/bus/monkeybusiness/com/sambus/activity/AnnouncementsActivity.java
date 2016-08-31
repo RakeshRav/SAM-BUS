@@ -35,6 +35,7 @@ import bus.monkeybusiness.com.sambus.model.busListResponse.BusListResponse;
 import bus.monkeybusiness.com.sambus.model.busStudentList.BusStudentList;
 import bus.monkeybusiness.com.sambus.retrofit.RestClient;
 import bus.monkeybusiness.com.sambus.utility.Utils;
+import bus.monkeybusiness.com.sambus.utility.dialogBox.CommonDialog;
 import bus.monkeybusiness.com.sambus.utility.dialogBox.LoadingBox;
 import bus.monkeybusiness.com.sambus.utility.preferences.Prefs;
 import bus.monkeybusiness.com.sambus.utility.preferences.PrefsKeys;
@@ -159,6 +160,7 @@ public class AnnouncementsActivity extends AppCompatActivity implements View.OnC
                     {
                         LoadingBox.dismissLoadingDialog();
                     }
+                    new CommonDialog(AnnouncementsActivity.this).Show("Successfully Created");
                     progressBarAnnouncements.setVisibility(View.VISIBLE);
                     linearLayoutList.setVisibility(View.INVISIBLE);
                     getAnnouncementServerCall();

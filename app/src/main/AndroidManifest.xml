@@ -35,6 +35,9 @@
         <activity android:name=".activity.AnnouncementsActivity">
 
         </activity>
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d1880d60e94326944ee6daebe0b9dcfac5c8bdd6" />
     </application>
 
 </manifest>

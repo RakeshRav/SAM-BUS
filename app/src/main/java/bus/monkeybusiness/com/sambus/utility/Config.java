@@ -4,7 +4,7 @@ public class Config {
 
     static String BASE_URL = "";
 
-    public static AppMode appMode = AppMode.TEST;
+    public static AppMode appMode = AppMode.LIVE;
 
     public static String getBaseURL() {
         init(appMode);

@@ -13,10 +13,12 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.rey.material.widget.CheckBox;
 import com.rey.material.widget.FloatingActionButton;
 
+import io.fabric.sdk.android.Fabric;
 import java.io.UnsupportedEncodingException;
 
 import bus.monkeybusiness.com.sambus.R;
@@ -100,6 +102,7 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
 //        Fabric.with(this, new Crashlytics());
         setContentView(R.layout.activity_login);
 

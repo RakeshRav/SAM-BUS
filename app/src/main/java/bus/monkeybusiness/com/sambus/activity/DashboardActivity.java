@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -35,8 +34,8 @@ import bus.monkeybusiness.com.sambus.utility.Log;
 import bus.monkeybusiness.com.sambus.utility.dialogBox.LoadingBox;
 import bus.monkeybusiness.com.sambus.utility.preferences.Prefs;
 import bus.monkeybusiness.com.sambus.utility.preferences.PrefsKeys;
-import io.codetail.animation.ViewAnimationUtils;
 import io.codetail.animation.SupportAnimator;
+import io.codetail.animation.ViewAnimationUtils;
 import retrofit.Callback;
 import retrofit.RetrofitError;
 import retrofit.client.Response;
@@ -52,37 +51,34 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
     LinearLayout linearLayoutMainDash;
     //
     RelativeLayout relativeLayoutMenu;
-
-    private LinearLayout attachmentLayout;
-    private boolean isHidden = true;
+    FrameLayout framelayoutTop;
+    ImageView imageViewProfilePic;
 
 //    TextView textViewActionTitle;
 
 //    TextView textViewClass;
 //    TextView textViewContact;
 //    TextView textViewEmailStudent;
-
-    FrameLayout framelayoutTop;
-    ImageView imageViewProfilePic;
     TextView textViewName;
     TextView textViewGreetings;
     //    TextView textViewAttdText;
 //    TextView textViewAttdTitle;
     TextView textViewEventsText;
-
-//    Button buttonTakeAttd;
-
     //    ProgressBar progressBarDash;
     FrameLayout frameLayoutAttd;
-//    RelativeLayout relativeLayoutAdd;
-
     RelativeLayout relativeLayoutNodataFound;
 
+//    Button buttonTakeAttd;
     ListView listViewEvents;
+//    RelativeLayout relativeLayoutAdd;
     ProgressBar progressBarEvents;
-    private BusListAdapter busListAdapter;
-
     RelativeLayout relativeLayoutTop;
+    LinearLayout btnAnnounce;
+    LinearLayout btnRemarks;
+    LinearLayout btnsignOut;
+    private LinearLayout attachmentLayout;
+    private boolean isHidden = true;
+    private BusListAdapter busListAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -107,10 +103,6 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
             }
         }, 200);
     }
-
-    LinearLayout btnAnnounce;
-    LinearLayout btnRemarks;
-    LinearLayout btnsignOut;
 
     public void initialization() {
         linearLayoutMainDash = (LinearLayout) findViewById(R.id.root);
@@ -223,24 +215,23 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
 
         switch (v.getId()) {
             case R.id.relativeLayoutMenu:
-                Log.d(TAG,"Clicked menu");
-                if (isHidden)
-                {
+                Log.d(TAG, "Clicked menu");
+                if (isHidden) {
                     if (Build.VERSION.SDK_INT < Build.VERSION_CODES.LOLLIPOP)
                         showMenuBelowLollipop();
                     else
                         showMenu();
-                }else {
+                } else {
                     hideMenu();
                 }
-                  break;
+                break;
             case R.id.btnAnnounce:
-                Intent intent = new Intent(this,AnnouncementsActivity.class);
+                Intent intent = new Intent(this, AnnouncementsActivity.class);
                 startActivity(intent);
                 hideMenu();
                 break;
             case R.id.btnRemarks:
-                Intent remarksIntent = new Intent(this,RemarksActivity.class);
+                Intent remarksIntent = new Intent(this, RemarksActivity.class);
                 startActivity(remarksIntent);
                 hideMenu();
                 break;
